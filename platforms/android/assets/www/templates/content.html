@@ -1,0 +1,89 @@
+<!-- ng-controller="contentController" -->
+<ion-view title="{{title}}" >
+
+    <ion-header-bar align-title="center" style="border-bottom:1px solid #ccc;">
+
+        <button class="button icon ion-ios-arrow-left" style="border-radius:50%;padding: 0 9px;" ng-click="backward()"></button>
+        <h2 class="title">新闻正文</h2>
+
+    </ion-header-bar>
+
+    <ion-content scroll="false" >
+        <ion-scroll class="content_main" conscroll >
+            <div class="text" >
+                <h4 class="text-left dark">{{newsDetail.docsubject}}</h4>
+                <p id="iostest" class="message" style="color:#666;">
+                    <span >{{newsDetail.docdepartmentname}}</span>
+                    <span ng-show="point">·</span>
+                    <span>{{newsDetail.doccreater}}</span>
+                    <span>｜</span>
+                    <span>{{newsDetail.doccreatedate}}</span>
+                </p>
+
+                <div ng-bind-html="newsDetail.doccontent" class="text_content dark"></div>
+                <div class="last">
+                    <span>{{newsDetail.doclastmodusername}}</span>
+                    最后修改于
+                    <br />
+                    {{newsDetail.doclastmoddate}} {{newsDetail.doclastmodtime}}
+                    <br />
+                </div>
+                <div class="praise_big {{praiseDisa}} clear" ng-click="praise()">
+                    <span class="icon ion-thumbsup"></span>
+                    <span>{{praiseCount}}</span>
+                </div>
+                <div class="avatar clear">
+                    <img ng-repeat="praise in praises" ng-src="{{ praise.userIcon||'img/icon_m_wev8.jpg'}}" />
+                    <span></span>
+                </div>
+                <div class="conAsha clear" >
+                    <span class="commentCount pull-right" ng-click="goC()">
+                        <i class="icon ion-chatbubble-working icon-large" ></i>
+                        ({{commentsCount}})
+                    </span>
+                    <span class="pull-left" ng-click="goS()">
+                        <i class="icon ion-forward icon-large" ></i>
+                        ({{praiseCount}})
+                    </span>
+                    
+                </div>
+
+            </div>
+
+            <div class="list"  id="comment">
+                <div class="item item-avatar" ng-repeat="comment in comments">
+                    <img ng-src="{{comment.userIcon ||'img/icon_m_wev8.jpg'}}"/>
+                    <h2>
+                        {{comment.username}} ·
+                        <small>{{ dateSwitch(comment.createTime) }}</small>
+                    </h2>
+                    <pre>{{replaceBr(comment.content)}}</pre>
+                </div>
+
+            </div>
+        </ion-scroll>
+        <div class="bottom {{bottomShow}}">
+         <!-- ng-show="bottomShow" -->
+            <form>
+                <label class="wraper" ng-style="mystyle">
+                    <textarea placeholder="{{txt}}" id="ping" ng-trim="false" ng-model="content" ng-focus="change()" ng-blur="return()" minlength="1" maxlength="150" msdelastic ng-keyup="" ng-keydown="" ></textarea>
+                    <input type="submit" ng-click="sendComment()" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+                    <span ng-hide="one">{{150 - content.length}}</span>
+                </label>
+                <div class="row bot_right" >
+                    <a ng-show="one" id="back_btn" class="icon-yuan" ng-click="scrollTop()"> <i class="icon ion-android-arrow-up "></i>
+                        </a>
+                    <div ng-show="cORs">
+                        <a ng-show="send" class="send pull-right" type="submit" ng-click="sendComment()">发送</a>
+                        <a ng-show="!send" class="send pull-right" type="submit" ng-click="">分享</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>    
+        <!-- <div ng-show="mask" ng-click="return()" class="mask"></div> -->
+
+    </ion-content>
+
+    
+</ion-view>

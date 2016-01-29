@@ -1,0 +1,119 @@
+<div >
+	<ion-refresher pulling-text="更新..."  on-refresh="doFresh()" spinner="android"></ion-refresher>
+	<p class="refreshTips" ng-show="refreshTips"> <i class="icon ion-alert-circled"></i>
+		数据加载失败，请检查网络设置！
+	</p>
+	<div class="list zone_list" >
+		<!-- <a class="item item-thumbnail-left" ng-repeat="new in newscontant" ng-click="contentBtn(3160,$index)">
+			<img ng-src="http://it.hgits.cn:91/CompanyNews/weaver/weaver.file.FileDownload?fileid=5863" src="http://it.hgits.cn:91/CompanyNews/weaver/weaver.file.FileDownload?fileid=5863">
+			<h2 class="ng-binding">“高速取消人工收费”不靠谱 安ETC是否收费未定</h2>
+			<p class="author">
+				<img ng-src="http://it.hgits.cn:91/CompanyNews/messager/usericon/loginid20150801111035.jpg" class="user_img" src="http://it.hgits.cn:91/CompanyNews/messager/usericon/loginid20150801111035.jpg">
+				<span class="ng-binding">
+					王晓兰 · 18小时前 
+				</span>
+			</p>
+			<p class="clear">
+				<span href="#" class="subdued ng-binding"> <i class="icon ion-ios-chatbubble-outline"></i>
+					0
+				</span>
+				<span href="#" class="subdued ng-binding">
+					<i class="icon ion-thumbsup"></i>
+					0
+				</span>
+				<span href="#" class="subdued ng-binding">
+					<i class="icon ion-forward"></i>
+					0
+				</span>
+			</p>
+		</a> -->
+		<div class="item special_list">
+			<div >
+				<div class="zone_user clear">
+					<img class="zone_user_i pull-left" src="http://it.hgits.cn:91/CompanyNews/messager/usericon/loginid20150801111035.jpg"/>
+					<span class="zone_user_title">王晓兰 研发中心</span>	
+					<span class="zone_user_time">10-30 10:32</span>	
+				</div>
+				<pre class="zone_con">“高速取消人工收费”不靠谱 安ETC是否收费未定收费未定收费未定收费未定收费未定收费未定</pre>
+			</div>
+			<p class="clear zone_com">
+				<span href="#" class="pull-left">浏览100次
+				</span>
+				<span href="#" class="pull-right">
+					<i class="icon ion-thumbsup"></i>
+					0
+				</span>
+				<span href="#" class="pull-right">
+					<i class="icon ion-forward"></i>
+					0
+				</span>
+				<span href="#" class="pull-right"> <i class="icon ion-ios-chatbubble-outline"></i>
+					0
+				</span>
+				
+			</p>
+		</div>
+		
+		<div class="item special_list">
+			<div href="javascript:;">
+				<div class="zone_user clear">
+					<img class="zone_user_i pull-left" src="http://it.hgits.cn:91/CompanyNews/messager/usericon/loginid20150801111035.jpg"/>
+					<span class="zone_user_title">王晓兰 研发中心</span>	
+					<span class="zone_user_time">10-30 10:32</span>	
+				</div>
+				<pre class="zone_con">“高速取消人工收费”不靠谱 安ETC是否安ETC是否安ETC是否安ETC是否安ETC是否收费未定</pre>
+				<div class="sub_con clear">
+					<div class="pull-left sub_con_left">
+						<img class="sub_con_user_i" src="http://it.hgits.cn:91/CompanyNews/messager/usericon/loginid20150801111035.jpg"/>
+						<span class="sub_con_user">王晓兰</span>
+					</div>
+					<p class="pull-right sub_con_right">项目: “高速取消人工收费”不靠谱 安ETC是否收费未定</p>
+
+				</div>
+			</div>
+			<p class="clear zone_com">
+				<span href="#" class="pull-left">浏览100次
+				</span>
+				<span href="#" class="pull-right">
+					<i class="icon ion-thumbsup"></i>
+					0
+				</span>
+				<span href="#" class="pull-right">
+					<i class="icon ion-forward"></i>
+					0
+				</span>
+				<span href="#" class="pull-right"> <i class="icon ion-ios-chatbubble-outline"></i>
+					0
+				</span>
+			</p>
+
+		</div>
+
+		<div class="item item-thumbnail-left" ng-repeat="new in newscontant" >
+			<div ng-click="contentBtn({{new.id}},$index)">
+				<img class="item_img" ng-src="{{new.firstImg}}"/>
+				<h2>{{new.docsubject}}</h2>
+				<p class="author">
+					<img ng-src="{{ new.doccreatericon ||'img/icon_m_wev8.jpg'}}"  class="user_img"/>
+					<span>
+						{{ new.doccreater }} · {{ dateSwitch(new.doccreatedate +" "+new.doccreatetime)}} 
+					</span>
+				</p>
+			</div>
+			<p class="clear">
+				<span href="#" class="subdued"> <i class="icon ion-ios-chatbubble-outline"></i>
+					{{new.commentCount}}
+				</span>
+				<span href="#" class="subdued">
+					<i class="icon ion-thumbsup"></i>
+					{{new.praiseCount}}
+				</span>
+				<span href="#" class="subdued">
+					<i class="icon ion-forward"></i>
+					{{new.praiseCount}}
+				</span>
+			</p>
+		</div>
+	</div>
+	<ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" pulling-text="加载..."  spinner="android"></ion-infinite-scroll>
+</div>

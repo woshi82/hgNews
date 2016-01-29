@@ -1,0 +1,28 @@
+<div>
+	<ion-refresher pulling-text="更新..."  on-refresh="doFresh()" spinner="android"></ion-refresher>
+	<p class="refreshTips" ng-show="refreshTips"> <i class="icon ion-alert-circled"></i>
+		数据加载失败，请检查网络设置！
+	</p>
+	<div class="list" >
+		<a class="item item-thumbnail-left" ng-repeat="new in newscontant" ng-click="contentBtn({{new.id}},$index)">
+			<img ng-src="{{new.firstImg}}"/>
+			<h2>{{new.docsubject}}</h2>
+			<p class="author">
+				<img ng-src="{{ new.doccreatericon ||'img/icon_m_wev8.jpg'}}"  class="user_img"/>
+				<span>
+					{{ new.doccreater }} · {{ dateSwitch(new.doccreatedate +" "+new.doccreatetime)}}
+				</span>
+			</p>
+			<p>
+				<span href="#" class="subdued"> <i class="icon ion-ios-chatbubble-outline"></i>
+					{{new.commentCount}}
+				</span>
+				<span href="#" class="subdued">
+					<i class="icon ion-thumbsup"></i>
+					{{new.praiseCount}}
+				</span>
+			</p>
+		</a>
+	</div>
+	<ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" pulling-text="加载..."  spinner="android"></ion-infinite-scroll>
+</div>

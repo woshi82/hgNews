@@ -1,0 +1,83 @@
+
+<ion-view title="{{title}}" >
+
+    <ion-header-bar align-title="center" style="border-bottom:1px solid #ccc;">
+
+        <button class="button icon ion-ios-arrow-left" style="border-radius:50%;padding: 0 9px;" ng-click="backward()"></button>
+        <h2 class="title">新闻正文</h2>
+
+    </ion-header-bar>
+
+    <ion-content scroll="true">
+        <div class="text" >
+            <h4 class="text-left dark">{{newsDetail.docsubject}}</h4>
+            <p id="iostest" class="message" style="color:#666;">
+                <span >{{newsDetail.docdepartmentname}}</span>
+                <span ng-show="point">·</span>
+                <span>{{newsDetail.doccreater}}</span>
+                <span>｜</span>
+                <span>{{newsDetail.doccreatedate}}</span>
+            </p>
+
+            <div ng-bind-html="newsDetail.doccontent" class="text_content dark"></div>
+            <div class="last">
+                <span>{{newsDetail.doclastmodusername}}</span>
+                最后修改于
+                <br />
+                {{newsDetail.doclastmoddate}} {{newsDetail.doclastmodtime}}
+                <br />
+                <br />
+                <br />
+            </div>
+
+            <div class="avatar">
+                <img ng-repeat="praise in praises" ng-src="{{ praise.userIcon||'img/icon_m_wev8.jpg'}}" />
+                <span></span>
+            </div>
+            <div class="praise">
+                <span>
+                    {{praiseCount}}人表示很赞 <i class="icon ion-thumbsup icon-large" ></i>
+                </span>
+                <span class="commentCount">
+                    {{commentsCount}}个评论 <i class="icon ion-chatbubble-working icon-large" ></i>
+                </span>
+            </div>
+
+        </div>
+
+        <div class="list"  id="comment">
+            <div class="item item-avatar" ng-repeat="comment in comments">
+                <img ng-src="{{comment.userIcon ||'img/icon_m_wev8.jpg'}}"/>
+                <h2>
+                    {{comment.username}} ·
+                    <small>{{ dateSwitch(comment.createTime) }}</small>
+                </h2>
+                <pre>{{replaceBr(comment.content)}}</pre>
+            </div>
+
+        </div>
+        <div ng-show="mask" ng-click="return()" class="mask"></div>
+
+    </ion-content>
+
+    <div class="bottom">
+        <form>
+            <label class="wraper" ng-style="mystyle">
+                <textarea placeholder="{{txt}}" id="ping" ng-trim="false" ng-model="content" ng-focus="change()" minlength="1" maxlength="150" msd-elastic ng-keyup="expandText()" ng-keydown="expandText()" ></textarea>
+                <input type="submit" ng-click="sendComment()" style="position: absolute; left: -9999px; width: 1px; height: 1px;"/>
+                <span ng-hide="one">{{150 - content.length}}</span>
+            </label>
+            <div class="row bot_right" ng-show="one">
+                <div class="col col-50">
+                    <a class="{{praiseBorder}}" ng-click="praise()" > <i class="icon ion-thumbsup"></i>
+                    </a>
+                </div>
+                <div class="col col-50">
+                    <a id="back_btn" class="icon-yuan" ng-click="scrollTop()"> <i class="icon ion-android-arrow-up "></i>
+                    </a>
+                </div>
+            </div>
+            <a ng-show="send" class="send pull-right" type="submit" ng-click="sendComment()">发送</a>
+        </form>
+    </div>
+</ion-view>

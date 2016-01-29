@@ -1,0 +1,56 @@
+<div  class="content_main">
+	<ion-scroll class="content_main">
+	<ion-refresher pulling-text="更新..."  on-refresh="doFresh()" spinner="android"></ion-refresher>
+	<p class="refreshTips" ng-show="refreshTips"> <i class="icon ion-alert-circled"></i>
+		数据加载失败，请检查网络设置！
+	</p>
+	<div class="list" >
+
+		<div class="item item-thumbnail-left" ng-repeat="new in newscontant" >
+			<div ng-click="contentBtn({{new.id}},$index)">
+				<img class="item_img" ng-src="{{new.firstImg}}"/>
+				<h2>{{new.docsubject}}</h2>
+				<p class="author">
+					<img ng-src="{{ new.doccreatericon ||'img/icon_m_wev8.jpg'}}"  class="user_img"/>
+					<span>
+						{{ new.doccreater }} · {{ dateSwitch(new.doccreatedate +" "+new.doccreatetime)}} 
+					</span>
+				</p>
+			</div>
+			<!-- ion-thumbsup -->
+			<p class="clear">
+				<span href="#" class="subdued pull-right {{new.hasPraise | praiseIcon}}" ng-click="praise({{new.id}},$index)">
+					<i class="icon ion-thumbsup"></i>
+					{{new.praiseCount}}
+				</span>
+				<span href="#" class="subdued pull-right" ng-click="shareBottomFocus($index)">
+					<i class="icon ion-forward"></i>
+					{{new.praiseCount}}
+				</span>
+				<span href="#" class="subdued pull-right"> <i class="icon ion-ios-chatbubble-outline"></i>
+					{{new.commentCount}}
+				</span>
+				
+				
+			</p>
+		</div>
+	</div>
+	<ion-infinite-scroll ng-if="!noMoreItemsAvailable" on-infinite="loadMore()" distance="10%" pulling-text="加载..."  spinner="android"></ion-infinite-scroll>
+	</ion-scroll>
+	<div class="shareBottom {{shareBottom.show}}" >
+		<div class="shareBottom_con clear" ng-click="shareBottomFocus2()">
+			<img class="pull-left" src="{{ shareBottom.img ||''}}"/>
+			<p class="pull-right">{{shareBottom.subject}}</p>
+		</div>
+		<div class="shareBottom_form clear " >
+			<div class="shareBottom_dia pull-left">
+				<textarea placeholder="说些什么吧~" id="shareBottom_dia" ng-trim="false" ng-focus="" ng-blur="shareBottomBlur()" minlength="1" maxlength="150" ng-model="share_con" shareconela></textarea>
+				<span>{{150 - share_con.length}}</span>
+			</div>
+
+			<div class="shareBottom_but pull-right"><a href="javascript:;">分享</a></div>
+			
+		</div>
+	</div>
+	<a class="shareBottomMask {{shareBottom.show}}" ng-click="shareBottomBlur()"  ng-mousemove="shareBottomBlur()"></a>
+</div>

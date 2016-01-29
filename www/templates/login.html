@@ -1,0 +1,41 @@
+
+
+<ion-view view-title="华软·智能交通" >
+	<ion-header-bar class="bar-main" align-title="center">
+		<h2 class="title">华软·智能交通</h2>
+	</ion-header-bar>
+	<ion-content>
+		<div class="text-center margin loginLogo">
+
+			<img src="img/logo.png" />
+
+		</div>
+		<!-- ng-controller="loginController" -->
+		<div class="list list-inset loginForm" >
+			<form name="loginForm">
+		    	<div class="item item-input">
+
+					<i class="icon ion-person placeholder-icon icon-large"></i>
+		      		<input type="text" placeholder="用户名" maxlength="16" ng-model="user.username" ng-focus="cleanBtn('user')" ng-blur="cleanBtn('user')" required />
+					<button class="button button-clear" ng-show="userVar" ng-click="cleanInput('user')">
+					    <i class="icon ion-android-close"></i>
+					</button>
+
+			    </div>
+			    <div class="item item-input">
+
+			    	<i class="icon ion-locked placeholder-icon icon-large"></i>
+		      		<input type="password" placeholder="密码" maxlength="30" ng-model="user.password" ng-focus="cleanBtn('pwd')" ng-blur="cleanBtn('pwd')" required />
+		      		<button class="button button-clear" ng-show="pwdVar" ng-click="cleanInput('pwd')">
+					    <i class="icon ion-android-close"></i>
+					</button>
+
+			    </div>
+			    <center class="tips1" ng-show="loginP">{{checkText}}</center>
+				<!-- ng-click="login() -->
+			    <a href="javascript:;" class="button button-block button-main" ng-disabled="loginForm.$invalid" ng-click="login()">登录</a>
+			    <p class="tips2">请使用OA系统账号和密码登录</p>
+			</form>
+		</div>
+	</ion-content>
+</ion-view>

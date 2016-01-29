@@ -1,0 +1,67 @@
+
+
+<ion-side-menus> 
+    <!--  中间内容  --> 
+
+    <ion-side-menu-content  drag-content="false" > 
+
+        <ion-nav-bar class="bar-main" align-title="center" >
+              <ion-nav-buttons side="left">
+                  <a menu-toggle="left" class="userWrap">
+                        <span class="user">
+                            <img ng-src="{{operator.messagerurl}} " />
+                        </span>
+                        <span ng-if="bRotate"  class="userIcon"></span>  
+
+                  </a>
+              </ion-nav-buttons>
+        </ion-nav-bar>
+        
+        <ion-tabs class="tabs-main tabs-striped tabs-icon-top ">
+            <ion-tab title="公司动态"  icon-on="ion-ios-paper" icon-off="ion-ios-paper-outline" href="#/tab/about/new2">
+                <ion-nav-view name="tab-about"></ion-nav-view>
+            </ion-tab>
+            <ion-tab title="行业资讯" icon-on="ion-ios-bookmarks" icon-off="ion-ios-bookmarks-outline" href="#/tab/home">
+
+                <ion-nav-view name="tab-home"></ion-nav-view>
+            </ion-tab >
+
+            <ion-tab  title="自由家园" icon-on="ion-ios-home" icon-off="ion-ios-home-outline" href="#/tab/freeHome" >
+
+   
+               <ion-nav-view name="freeHome"></ion-nav-view>
+            </ion-tab>
+            <ion-tab  title="我的主页" icon-on="ion-ios-person" icon-off="ion-ios-person-outline" href="#/tab/mine" >
+                <ion-nav-view name="tab-mine"></ion-nav-view>
+            </ion-tab>
+        </ion-tabs>
+ 
+    </ion-side-menu-content> 
+    <!--  左侧菜单  --> 
+    <ion-side-menu side="left" width="200"> 
+        <div class="userInfo">
+            <img ng-src="{{operator.messagerurl}}" />
+            <p class="username">{{operator.lastname}}</p>
+            <p class="part ">{{operator.departmentname}}</p>
+        </div>
+        <ul class="list side_menu aboutUsL ">
+            <li id="appVer" class="item item-avatar">
+                <img src="img/logo.png"/>
+                <h2>华软·智能交通 </h2>
+                <p class="clear"><small class="pull-left">v1.0.6</small><a class="pull-right" href="javascript:;">更新</a></p>
+            </li>
+            <li class="item">
+                <a href="javascript:;">意见反馈</a>
+            </li>
+            <li class="item">
+                <h2>华工信息软件有限公司</h2>
+            </li>
+        </ul>
+        <div class="sideBottom row">
+            <div ng-click="logout()" class="ion-log-out logout col col-50">注销</div>
+            <div ng-if="bExit" ng-click="exit()" class=" icon ion-ios-close-outline col col-50 exit"> 退出</div>
+        </div>
+    </ion-side-menu>
+
+</ion-side-menus> 
+

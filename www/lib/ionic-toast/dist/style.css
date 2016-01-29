@@ -1,0 +1,11 @@
+.ionic_toast{color:#FFF;cursor:default;font-size:1em;display:none;border-radius:6px;opacity:0;padding:8px 25px 8px 40px;margin:10px;position:fixed;left:50%;text-align:center;z-index:9999;background-color:rgba(56, 54, 54,.8);transform: translateX(-50%);-moz-transform: translateX(-50%);-ms-transform: translateX(-50%);-o-transform: translateX(-50%);-webkit-transform: translateX(-50%);box-shadow: 0 0 16px 0px #2D2D2D;transition: 1000ms;-webkit-transition: 1000ms;}.ionic_toast_top{top:10px}.ionic_toast_middle{top:40%}.ionic_toast_bottom{bottom:55px}.ionic_toast_close{border-radius:2px;color:#CCC;cursor:pointer;display:none;position:absolute;right:2px;top:0px;width:20px;height:20px}.toast_close_icon{position:relative;top:1px}.ionic_toast_sticky .ionic_toast_close{display:block}.ionic_toast_close:active{background-color:#555}
+.ionic_toast_icon .ionic_toast_tip {
+	display: block;
+	position: relative;
+}
+.ionic_toast_tip i:before {
+	font-size: 18px;
+	position: absolute;
+	top: 1px;
+	left: -18px;
+}
